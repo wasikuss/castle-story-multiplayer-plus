@@ -10,16 +10,24 @@ namespace CastleStory_MultiplayerPlusPlugin
 
         static void Postfix(LobbyPlayer __instance, string message)
         {
-            if (__instance.hasAuthority && message.Equals("/teams"))
+            if (message.Equals("/teams"))
             {
-                int team = 0;
-                UNetManager.instance.LobbyPlayerList.ForEach(delegate (LobbyPlayer lp)
+                if (!__instance.hasAuthority)
                 {
-                    lp.CallCmdSetTeam(team);
-                    string chatMessage = string.Format("<color=#{0}>{1} has changed team to {2}.</color>", BaseMenu.HexCastleYellow, lp.playerName, team);
-                    lp.CallRpcServerNewChatMessage(chatMessage);
-                    team++;
-                });
+                    string chatMessage = string.Format("<color=#{0}>{1} has no rights to issue this command!</color>", BaseMenu.HexCastleYellow, __instance.playerName);
+                    __instance.CallRpcServerNewChatMessage(chatMessage);
+                }
+                else
+                {
+                    int team = 0;
+                    UNetManager.instance.LobbyPlayerList.ForEach(delegate (LobbyPlayer lp)
+                    {
+                        lp.CallCmdSetTeam(team);
+                        string chatMessage = string.Format("<color=#{0}>{1} has changed team to {2}.</color>", BaseMenu.HexCastleYellow, lp.playerName, team);
+                        lp.CallRpcServerNewChatMessage(chatMessage);
+                        team++;
+                    });
+                }
             }
         }
     }
