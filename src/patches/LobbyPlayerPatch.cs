@@ -8,7 +8,7 @@ namespace CastleStory_MultiplayerPlusPlugin
     public class LobbyPlayerPatch
     {
 
-        static void Prefix(LobbyPlayer __instance, string message)
+        static void Postfix(LobbyPlayer __instance, string message)
         {
             if (__instance.hasAuthority && message.Equals("/teams"))
             {
