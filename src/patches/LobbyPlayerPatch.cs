@@ -6,7 +6,7 @@ namespace CastleStory_MultiplayerPlusPlugin
     [HarmonyPatch(typeof(LobbyPlayer), nameof(LobbyPlayer.CmdSendChatMessage))]
     public class LobbyPlayerPatch
     { 
-        static bool Prefix(LobbyPlayer __instance, string message)
+        static void Prefix(LobbyPlayer __instance, string message)
         {
             if (__instance.hasAuthority && message.Equals("/teams"))
 			{
@@ -15,9 +15,7 @@ namespace CastleStory_MultiplayerPlusPlugin
 				{
 					lp.CallCmdSetTeam(team++);
 				});
-				return false;
 			}
-            return true;
         }
     }
 }
