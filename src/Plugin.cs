@@ -1,9 +1,12 @@
 using System;
+using System.Linq;
 
 using BepInEx;
-using HarmonyLib;
 using BepInEx.Logging;
+using HarmonyLib;
 
+using Brix.Game;
+using Brix.UI.Icons;
 
 namespace CastleStory_MultiplayerPlusPlugin
 {
@@ -31,6 +34,13 @@ namespace CastleStory_MultiplayerPlusPlugin
             _instance = this;
 
             new Harmony("com.wasikuss.castlestory.multiplayerplus").PatchAll();
+
+            FixFlagIcons();
+        }
+
+        private void FixFlagIcons()
+        {
+            Enumerable.Range(0, 100).Do(i => Faction.IconKeyMap.Add(i.ToString(), IconKeys._UI_FlagSmall));
         }
     }
 }
