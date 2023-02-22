@@ -30,7 +30,6 @@ namespace CastleStory_MultiplayerPlusPlugin
                     {
                         if (codes[i + 2].opcode == OpCodes.Call)
                         {
-                            CastleStory_MultiplayerPlusPlugin.Plugin.Instance.Log.LogError("operand = " + codes[i + 2].operand.GetType());
                             codes[i + 1] = new CodeInstruction(OpCodes.Ldc_I4, 10);
                         }
                     }
