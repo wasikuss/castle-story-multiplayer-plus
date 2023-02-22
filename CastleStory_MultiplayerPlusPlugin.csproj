@@ -3,7 +3,7 @@
     <TargetFramework>net35</TargetFramework>
     <AssemblyName>CastleStory_MultiplayerPlusPlugin</AssemblyName>
     <Description>CastleStory: Multiplayer+ Plugin</Description>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <CastleStoryManagedPath>PUT_HERE_PATH_TO_CASTLE_STORY_FOLDER/Castle Story_Data/Managed</CastleStoryManagedPath>
